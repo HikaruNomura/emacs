@@ -27,6 +27,7 @@
 ;; --- Configuration modules ------------------------------------------------
 (require 'init-platform)                 ; environment detection (load first)
 (require 'init-ui)
+(require 'init-japanese)                  ; comfortable Japanese input (top priority)
 (require 'init-completion)
 (require 'init-git)
 (require 'init-claude)                    ; Claude Code integration (top priority)

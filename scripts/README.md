@@ -18,13 +18,32 @@ whatever is installed, so installing the font is optional but recommended.
 Both install per-user (no admin/root) and are idempotent. Restart Emacs
 afterwards. Verify on Linux with `fc-list | grep -i 'UDEV Gothic'`.
 
+## Japanese input (Mozc)
+
+Comfortable Japanese input is the top priority. The config uses `mozc.el`
+(Mozc engine, in-Emacs) so it works identically in GUI and in a terminal
+over SSH. It needs the `mozc_emacs_helper` binary:
+
+| Environment | Command |
+|-------------|---------|
+| Debian/Ubuntu (Spark, WSL2) | `./scripts/install-japanese-input.sh` (`apt install emacs-mozc-bin`) |
+| Native Windows | no easy helper — use the Windows IME in GUI, or SSH into Spark/WSL |
+
+Toggle input with `C-\` (`japanese-mozc`). If the helper is absent the
+config silently skips Mozc, so startup is never broken.
+
 ## Building / installing Emacs
 
-### Linux / WSL2 / DGX Spark / Pomera DM250
+### Linux / WSL2 / DGX Spark
 `./scripts/build-emacs.sh` (run with no args first — it prints the build
 deps and configure flags to review, then re-run with `--yes`). Builds with
-native compilation + tree-sitter. For the low-powered DM250, consider the
-distro package or the lighter `--without-x` configure noted in the script.
+native compilation + tree-sitter. The DGX Spark is the main Linux box.
+
+### Pomera DM250
+Typically you **SSH from the DM250 into the Spark** and run Emacs there, so
+there is usually no need to build Emacs on the DM250 itself. (If you ever do
+want a local build, use the lighter `--without-x` configure for a
+terminal-only Emacs.)
 
 ### Windows
 Building native Emacs from source is painful; prefer a prebuilt binary:
