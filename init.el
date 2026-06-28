@@ -29,6 +29,7 @@
 (require 'init-ui)
 (require 'init-japanese)                  ; comfortable Japanese input (top priority)
 (require 'init-completion)
+(require 'init-editing)
 (require 'init-git)
 (require 'init-claude)                    ; Claude Code integration (local claude)
 (require 'init-terminal)                  ; in-Emacs terminal for SSH/tmux (remote claude)
