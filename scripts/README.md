@@ -54,6 +54,25 @@ the main path: create it on the Linux/WSL side with `uv venv && uv sync` and
 cannot be used from a WSL/Linux Emacs — each OS needs its own venv with
 OS-native binaries inside (pet locates the `.venv` dir either way).
 
+## LaTeX (paper writing)
+
+AUCTeX + latexmk + pdf-tools (in-Emacs PDF view with two-way SyncTeX).
+`C-c C-c` builds (LatexMk), `C-c C-v` views, `C-c C-p C-p` previews math
+inline. The engine is left to the document, so Japanese works via lualatex/
+xelatex or (u)platex+dvipdfmx — select it in a `.latexmkrc`, a
+`%!TEX program = ...` line, or a file-local `(setq TeX-engine 'luatex)`.
+
+Needs a TeX distribution (e.g. `sudo apt-get install texlive-latex-extra
+texlive-luatex texlive-lang-japanese latexmk biber`), plus the pdf-tools
+helper build deps:
+
+```sh
+./scripts/install-pdf-tools-deps.sh    # then open a PDF / M-x pdf-tools-install
+```
+
+Where pdf-tools can't build (e.g. native Windows), AUCTeX falls back to the
+system PDF viewer.
+
 ## TypeScript / web
 
 For the workspace's pnpm/React/Vite web packages (TS 5.7 strict). The

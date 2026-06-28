@@ -36,6 +36,7 @@
 (require 'init-python)
 (require 'init-typescript)
 (require 'init-markdown)
+(require 'init-latex)
 (require 'init-theme)
 (require 'init-fonts)
 
