@@ -29,6 +29,7 @@
 (require 'init-ui)
 (require 'init-completion)
 (require 'init-git)
+(require 'init-claude)                    ; Claude Code integration (top priority)
 (require 'init-dired)
 (require 'init-theme)
 (require 'init-fonts)
