@@ -13,6 +13,9 @@
 
 ;;; Code:
 
+;; Shared customize group for this config's own options (`my/...').
+(defgroup my nil "Personal Emacs configuration." :group 'convenience)
+
 (defconst my/windows-p (eq system-type 'windows-nt)
   "Non-nil on native Microsoft Windows.")
 

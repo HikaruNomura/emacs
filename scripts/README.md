@@ -40,10 +40,11 @@ deps and configure flags to review, then re-run with `--yes`). Builds with
 native compilation + tree-sitter. The DGX Spark is the main Linux box.
 
 ### Pomera DM250
-Typically you **SSH from the DM250 into the Spark** and run Emacs there, so
-there is usually no need to build Emacs on the DM250 itself. (If you ever do
-want a local build, use the lighter `--without-x` configure for a
-terminal-only Emacs.)
+The DM250 runs Emacs **locally in its terminal** (with Japanese input), and
+from inside Emacs you open a terminal and `ssh` to the Spark to run tmux +
+Claude there (see "Working over SSH" below). So the DM250 needs a local,
+terminal-only Emacs — build with the lighter `--without-x` configure, or use
+whatever Emacs the device's distro provides.
 
 ### Windows
 Building native Emacs from source is painful; prefer a prebuilt binary:
@@ -55,6 +56,29 @@ Building native Emacs from source is painful; prefer a prebuilt binary:
 
 PowerShell is the default shell on Windows; point Emacs' `shell-file-name`
 at it from a future `lisp/init-platform.el` host override if needed.
+
+## Working over SSH (eat + tmux + Claude on a server)
+
+Two ways to use Claude from Emacs, both supported:
+
+- **Local** — `M-x claude-code` (`C-c c`) runs the `claude` CLI as a local
+  subprocess. Use when Emacs runs on the same box you want Claude on.
+- **Remote** — open an in-Emacs terminal and SSH to a server, then run tmux
+  + `claude` there. Use from the DM250 (Emacs local) into the Spark.
+
+Terminal keys (prefix `C-c t`): `t` here, `o` other window, `p` project,
+`s` SSH to a host. Populate the host list once:
+
+```elisp
+(setq my/ssh-hosts '("spark" "user@dgx"))   ; ~/.ssh/config aliases are fine
+```
+
+**One-time per server:** the `eat` terminal uses its own `TERM`, so install
+eat's terminfo on the server or tmux/Claude's TUI will render wrong:
+
+```sh
+./scripts/sync-eat-terminfo.sh spark
+```
 
 ## After install
 
