@@ -11,6 +11,9 @@ elpa/
 # install.sh backups
 backup-*/
 
+# Local session handoff (not part of the config)
+RESUME.md
+
 # Editor/OS noise
 *~
 \#*\#
