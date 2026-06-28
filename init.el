@@ -25,10 +25,13 @@
 (setq use-package-always-ensure t)
 
 ;; --- Configuration modules ------------------------------------------------
+(require 'init-platform)                 ; environment detection (load first)
 (require 'init-ui)
 (require 'init-completion)
 (require 'init-git)
 (require 'init-dired)
+(require 'init-theme)
+(require 'init-fonts)
 
 ;; Keep Customize's generated output out of version control.
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
