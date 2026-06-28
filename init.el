@@ -33,6 +33,7 @@
 (require 'init-claude)                    ; Claude Code integration (local claude)
 (require 'init-terminal)                  ; in-Emacs terminal for SSH/tmux (remote claude)
 (require 'init-dired)
+(require 'init-python)
 (require 'init-theme)
 (require 'init-fonts)
 

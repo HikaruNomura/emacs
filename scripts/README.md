@@ -32,6 +32,27 @@ over SSH. It needs the `mozc_emacs_helper` binary:
 Toggle input with `C-\` (`japanese-mozc`). If the helper is absent the
 config silently skips Mozc, so startup is never broken.
 
+## Python development
+
+Tuned for the nemophila-workspace (uv monorepo: ruff + mypy --strict +
+pytest). `pet` auto-detects the project's `.venv` and points ruff / mypy /
+pytest / the LSP at it — no paths are hardcoded. Keys in Python buffers:
+`C-c y` pytest menu, `C-c m` run strict mypy.
+
+Language server (completion / hover / go-to-definition) is basedpyright,
+installed locally (never added to the project's deps):
+
+```sh
+./scripts/install-python-lsp.sh        # uv tool / pipx / npm
+```
+
+**Per-OS virtualenv caveat:** the checked-out `.venv` is whatever OS created
+it. A **Windows** `.venv` (with `Scripts\*.exe`) works from native Windows
+Emacs, but its `.exe` tools cannot be used from a WSL/Linux Emacs. When you
+edit the workspace from **WSL2 or the Spark**, create a Linux venv there
+(`uv venv && uv sync`); `pet` then finds `.venv/bin/...` automatically. (pet
+locates the `.venv` either way; it just needs OS-native binaries inside it.)
+
 ## Building / installing Emacs
 
 ### Linux / WSL2 / DGX Spark
