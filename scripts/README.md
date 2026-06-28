@@ -54,6 +54,28 @@ the main path: create it on the Linux/WSL side with `uv venv && uv sync` and
 cannot be used from a WSL/Linux Emacs — each OS needs its own venv with
 OS-native binaries inside (pet locates the `.venv` dir either way).
 
+## TypeScript / web
+
+For the workspace's pnpm/React/Vite web packages (TS 5.7 strict). The
+project ships no linter/formatter, so the config adds none — only a
+language server (completion / hover / go-to-definition / type diagnostics),
+which never reformats code.
+
+```sh
+./scripts/install-ts-lsp.sh            # npm i -g typescript-language-server
+```
+
+Then, inside Emacs, install the tree-sitter grammars once (needs git + a C
+compiler — present on Linux/WSL):
+
+```
+M-x my/ts-install-grammars
+```
+
+After that `.ts`/`.tsx` open in `typescript-ts-mode` / `tsx-ts-mode` and
+eglot starts automatically. (No grammars / no server → files still open,
+just without TS modes or LSP — nothing breaks.)
+
 ## Markdown preview (optional)
 
 In-buffer rendering (GFM mode, scaled headings, native code highlighting)
