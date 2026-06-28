@@ -46,12 +46,13 @@ installed locally (never added to the project's deps):
 ./scripts/install-python-lsp.sh        # uv tool / pipx / npm
 ```
 
-**Per-OS virtualenv caveat:** the checked-out `.venv` is whatever OS created
-it. A **Windows** `.venv` (with `Scripts\*.exe`) works from native Windows
-Emacs, but its `.exe` tools cannot be used from a WSL/Linux Emacs. When you
-edit the workspace from **WSL2 or the Spark**, create a Linux venv there
-(`uv venv && uv sync`); `pet` then finds `.venv/bin/...` automatically. (pet
-locates the `.venv` either way; it just needs OS-native binaries inside it.)
+**Per-OS virtualenv.** Development is moving to **Linux/WSL as the primary
+target** (Windows is needed only for LabVIEW-FPGA work), so the Linux venv is
+the main path: create it on the Linux/WSL side with `uv venv && uv sync` and
+`pet` finds `.venv/bin/...` automatically. A **Windows** `.venv` (with
+`Scripts\*.exe`) still works from native Windows Emacs, but those `.exe` tools
+cannot be used from a WSL/Linux Emacs — each OS needs its own venv with
+OS-native binaries inside (pet locates the `.venv` dir either way).
 
 ## Building / installing Emacs
 
