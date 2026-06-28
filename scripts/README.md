@@ -54,6 +54,17 @@ the main path: create it on the Linux/WSL side with `uv venv && uv sync` and
 cannot be used from a WSL/Linux Emacs — each OS needs its own venv with
 OS-native binaries inside (pet locates the `.venv` dir either way).
 
+## Markdown preview (optional)
+
+In-buffer rendering (GFM mode, scaled headings, native code highlighting)
+needs nothing extra. For a rendered preview:
+
+- Built-in live preview / HTML export (`C-c C-c l` / `C-c C-c v`) uses
+  `pandoc` if installed (`sudo apt-get install pandoc`).
+- GitHub-accurate preview via grip (`C-c C-c g`) needs the `grip` program:
+  `pipx install grip` (or `uv tool install grip`). In a GUI Emacs with
+  xwidgets it renders inside Emacs; otherwise it opens a browser.
+
 ## Building / installing Emacs
 
 ### Linux / WSL2 / DGX Spark

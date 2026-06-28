@@ -34,6 +34,7 @@
 (require 'init-terminal)                  ; in-Emacs terminal for SSH/tmux (remote claude)
 (require 'init-dired)
 (require 'init-python)
+(require 'init-markdown)
 (require 'init-theme)
 (require 'init-fonts)
 
